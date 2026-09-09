@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+*.egg-info/
+.env
+.idea/
+.vscode/
+
+# Never commit real client data or exports
+*.csv
+*.xlsx
+*.docx
+!**/example_*.csv

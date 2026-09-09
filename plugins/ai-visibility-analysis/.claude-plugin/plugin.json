@@ -1,0 +1,13 @@
+{
+  "name": "ai-visibility-analysis",
+  "description": "Turn Moz AI Visibility exports into executive and detailed reports plus a formatted Excel workbook.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jonathan Berthold",
+    "url": "https://jonathanberthold.com"
+  },
+  "homepage": "https://github.com/jbertho88/marketing-skills/tree/main/plugins/ai-visibility-analysis",
+  "repository": "https://github.com/jbertho88/marketing-skills",
+  "license": "MIT",
+  "keywords": ["seo","geo","aeo","ai-search","moz"]
+}

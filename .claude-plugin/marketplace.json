@@ -1,0 +1,49 @@
+{
+  "name": "marketing-skills",
+  "owner": {
+    "name": "Jonathan Berthold",
+    "url": "https://jonathanberthold.com"
+  },
+  "metadata": {
+    "description": "Production marketing skills for Claude Code. Currently SEO and AI search: AI visibility analysis, backlink gap analysis, and keyword-mapped SEO workbooks.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-visibility-analysis",
+      "source": "./plugins/ai-visibility-analysis",
+      "description": "Turn Moz AI Visibility prompt-response and citation exports into an executive-ready report, a detailed report, and a formatted Excel workbook. Ranks, topic performance, share of voice, and prompt-level gaps across ChatGPT, Gemini, Google AI Mode, and Perplexity.",
+      "version": "1.0.0",
+      "author": { "name": "Jonathan Berthold", "url": "https://jonathanberthold.com" },
+      "homepage": "https://github.com/jbertho88/marketing-skills/tree/main/plugins/ai-visibility-analysis",
+      "repository": "https://github.com/jbertho88/marketing-skills",
+      "license": "MIT",
+      "category": "seo",
+      "keywords": ["seo", "geo", "aeo", "ai-search", "ai-visibility", "share-of-voice", "moz", "reporting"]
+    },
+    {
+      "name": "backlink-gap-analysis",
+      "source": "./plugins/backlink-gap-analysis",
+      "description": "Run a backlink gap analysis end to end, starting from the SERP. Benchmark links per ranking page, find domains linking to competitors but not you, work out what earns those links, score every opportunity, and ship a workbook plus a sequenced outreach plan.",
+      "version": "1.0.0",
+      "author": { "name": "Jonathan Berthold", "url": "https://jonathanberthold.com" },
+      "homepage": "https://github.com/jbertho88/marketing-skills/tree/main/plugins/backlink-gap-analysis",
+      "repository": "https://github.com/jbertho88/marketing-skills",
+      "license": "MIT",
+      "category": "seo",
+      "keywords": ["seo", "backlinks", "link-building", "link-gap", "link-intersect", "outreach", "moz", "serp"]
+    },
+    {
+      "name": "seo-workbook-builder",
+      "source": "./plugins/seo-workbook-builder",
+      "description": "Build a keyword-mapped SEO workbook from a Screaming Frog crawl and ranking data. Maps keywords to pages, classifies page types, assigns optimization priority, and hands back a tracker your team can work from.",
+      "version": "1.0.0",
+      "author": { "name": "Jonathan Berthold", "url": "https://jonathanberthold.com" },
+      "homepage": "https://github.com/jbertho88/marketing-skills/tree/main/plugins/seo-workbook-builder",
+      "repository": "https://github.com/jbertho88/marketing-skills",
+      "license": "MIT",
+      "category": "seo",
+      "keywords": ["seo", "on-page", "keyword-mapping", "screaming-frog", "gsc", "workbook", "xlsx"]
+    }
+  ]
+}

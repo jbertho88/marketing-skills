@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Visibility Analysis"
+  short_description: "Analyze Moz AI visibility exports and reports"
+  default_prompt: "Use $ai-visibility-analysis to analyze these Moz AI Visibility exports and produce an executive summary MD/DOCX, a detailed report MD/DOCX, an Excel action workbook, metrics JSON, and a prompt appendix CSV. Ask me to confirm a fixed topic set for the prompt-response CSVs before the final run, suggest topics if needed, and verify that the Excel workbook opens and contains Dashboard, Action Plan, Prompt Appendix, Strategic Plays, Model x Topic, Portfolio Cleanup, and Data Dictionary sheets. If citation export CSVs are also present, run the optional citation analysis layer, merge it into the final report and workbook, and verify the citation sheets too."

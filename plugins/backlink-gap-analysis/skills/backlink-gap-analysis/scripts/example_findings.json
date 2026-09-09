@@ -1,0 +1,211 @@
+{
+  "client": "Example Client",
+  "client_domain": "client.example",
+  "run_date": "2026-09-07",
+  "market": "en-CA",
+  "data_source": "Synthetic test data; no live acquisition",
+  "competitors": [
+    {
+      "domain": "competitor.example"
+    }
+  ],
+  "live_serp": {
+    "supplied": false
+  },
+  "coverage": {
+    "serp_benchmark": {
+      "pulled": true
+    },
+    "link_gap": {
+      "pulled": true,
+      "expected": [
+        "competitor.example"
+      ],
+      "completed": [
+        "competitor.example"
+      ],
+      "omitted": {}
+    },
+    "recently_earned": {
+      "pulled": true,
+      "expected": [
+        "competitor.example"
+      ],
+      "completed": [
+        "competitor.example"
+      ],
+      "omitted": {}
+    },
+    "strongest_links": {
+      "pulled": true,
+      "expected": [
+        "competitor.example"
+      ],
+      "completed": [
+        "competitor.example"
+      ],
+      "omitted": {}
+    },
+    "competitor_top_pages": {
+      "pulled": true,
+      "expected": [
+        "competitor.example"
+      ],
+      "completed": [
+        "competitor.example"
+      ],
+      "omitted": {}
+    },
+    "page_gap": {
+      "pulled": true
+    },
+    "anchor_profile": {
+      "pulled": true
+    },
+    "scored_targets": {
+      "pulled": true
+    },
+    "asset_roadmap": {
+      "pulled": true
+    }
+  },
+  "executive_summary": {
+    "primary_constraint": "Not established: synthetic example",
+    "confidence": "Low",
+    "confidence_reason": "No live SERP or real link data",
+    "immediate": "Verify evidence and assign owners",
+    "next_60_days": "Review editorial pitches",
+    "strategic": "Assess a research asset",
+    "avoid": "Treating sample data as SEO findings"
+  },
+  "serp_benchmark": [],
+  "link_gap": [],
+  "recently_earned": [],
+  "strongest_links": [],
+  "competitor_top_pages": [],
+  "page_gap": [],
+  "anchor_profile": [],
+  "scored_targets": [
+    {
+      "domain": "publisher.example",
+      "opportunity_id": "opp-1",
+      "source": "gap",
+      "linking_page": "https://publisher.example/article-1",
+      "competitor_destination": "https://competitor.example/research/",
+      "evidence_status": "Verified link page",
+      "date_verified": "2026-09-07",
+      "verification_source": "Synthetic fixture only",
+      "factor_evidence": {
+        "relevance": "Synthetic fixture judgment",
+        "authority": "Synthetic fixture judgment",
+        "traffic_score": "Synthetic fixture judgment",
+        "context": "Synthetic fixture judgment",
+        "spam_clean": "Synthetic fixture judgment",
+        "contact": "Synthetic fixture judgment"
+      },
+      "traffic_proxy": "100 ranking keywords (synthetic)",
+      "traffic_source": "Synthetic fixture",
+      "earned_link_destination": "https://client.example/research/",
+      "commercial_page_supported": "https://client.example/product/",
+      "tactic": "resource page",
+      "note": "Synthetic evidence; do not contact",
+      "relevance": 24,
+      "authority": 16,
+      "traffic_score": 12,
+      "context": 12,
+      "spam_clean": 8,
+      "contact": 8
+    },
+    {
+      "domain": "publisher.example",
+      "opportunity_id": "opp-2",
+      "source": "gap",
+      "linking_page": "https://publisher.example/article-2",
+      "competitor_destination": "https://competitor.example/research/",
+      "evidence_status": "Verified link page",
+      "date_verified": "2026-09-07",
+      "verification_source": "Synthetic fixture only",
+      "factor_evidence": {
+        "relevance": "Synthetic fixture judgment",
+        "authority": "Synthetic fixture judgment",
+        "traffic_score": "Synthetic fixture judgment",
+        "context": "Synthetic fixture judgment",
+        "spam_clean": "Synthetic fixture judgment",
+        "contact": "Synthetic fixture judgment"
+      },
+      "traffic_proxy": "100 ranking keywords (synthetic)",
+      "traffic_source": "Synthetic fixture",
+      "earned_link_destination": "https://client.example/research/",
+      "commercial_page_supported": "https://client.example/product/",
+      "tactic": "resource page",
+      "note": "Synthetic evidence; do not contact",
+      "relevance": 18,
+      "authority": 12,
+      "traffic_score": 9,
+      "context": 9,
+      "spam_clean": 6,
+      "contact": 6
+    },
+    {
+      "domain": "small.example",
+      "opportunity_id": "opp-3",
+      "source": "gap",
+      "linking_page": "https://small.example/article-3",
+      "competitor_destination": "https://competitor.example/research/",
+      "evidence_status": "Verified link page",
+      "date_verified": "2026-09-07",
+      "verification_source": "Synthetic fixture only",
+      "factor_evidence": {
+        "relevance": "Synthetic fixture judgment",
+        "authority": "Synthetic fixture judgment",
+        "traffic_score": "Synthetic fixture judgment",
+        "context": "Synthetic fixture judgment",
+        "spam_clean": "Synthetic fixture judgment",
+        "contact": "Synthetic fixture judgment"
+      },
+      "traffic_proxy": "100 ranking keywords (synthetic)",
+      "traffic_source": "Synthetic fixture",
+      "earned_link_destination": "https://client.example/research/",
+      "commercial_page_supported": "https://client.example/product/",
+      "tactic": "resource page",
+      "note": "Synthetic evidence; do not contact",
+      "relevance": 9,
+      "authority": 6,
+      "traffic_score": 4,
+      "context": 4,
+      "spam_clean": 3,
+      "contact": 3
+    },
+    {
+      "domain": "unresolved.example",
+      "opportunity_id": "opp-4",
+      "source": "recent",
+      "linking_page": "https://unresolved.example/article-4",
+      "competitor_destination": "https://competitor.example/research/",
+      "evidence_status": "Domain only",
+      "date_verified": "2026-09-07",
+      "verification_source": "Synthetic fixture only",
+      "factor_evidence": {
+        "relevance": "Synthetic fixture judgment",
+        "authority": "Synthetic fixture judgment",
+        "traffic_score": "Synthetic fixture judgment",
+        "context": "Synthetic fixture judgment",
+        "spam_clean": "Synthetic fixture judgment",
+        "contact": "Synthetic fixture judgment"
+      },
+      "traffic_proxy": "100 ranking keywords (synthetic)",
+      "traffic_source": "Synthetic fixture",
+      "earned_link_destination": "https://client.example/research/",
+      "commercial_page_supported": "https://client.example/product/",
+      "tactic": "resource page",
+      "note": "Synthetic evidence; do not contact",
+      "relevance": 27,
+      "authority": 18,
+      "traffic_score": 14,
+      "context": 14,
+      "spam_clean": 9,
+      "contact": 9
+    }
+  ],
+  "asset_roadmap": []
+}

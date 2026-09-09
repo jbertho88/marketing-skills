@@ -1,0 +1,13 @@
+{
+  "name": "backlink-gap-analysis",
+  "description": "Backlink gap analysis from the SERP down: benchmark, gap, scoring, workbook, and outreach plan.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jonathan Berthold",
+    "url": "https://jonathanberthold.com"
+  },
+  "homepage": "https://github.com/jbertho88/marketing-skills/tree/main/plugins/backlink-gap-analysis",
+  "repository": "https://github.com/jbertho88/marketing-skills",
+  "license": "MIT",
+  "keywords": ["seo","backlinks","link-building","moz"]
+}

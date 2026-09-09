@@ -1,0 +1,61 @@
+{
+  "skill_name": "backlink-gap-analysis",
+  "evals": [
+    {
+      "id": 0,
+      "name": "competitor-set-validation",
+      "prompt": "we've got a new client, spamedica.com \u00e2\u20ac\u201d toronto med spa. client gave us their competitor list: drpirani.com, drdavidboudana.com, torontosurgery.com, torontoplasticsurgeon.com, drtorgerson.com. can you sanity check that set before I build the gap analysis on it? something feels off but I can't put my finger on it",
+      "expected_output": "Reports observed overlap when available, otherwise marks it unknown; qualifies competitor-set hypotheses with actual evidence.",
+      "assertions": [
+        "Does not invent overlap counts or client category facts",
+        "Uses supplied live SERP evidence when available",
+        "Explains competitor exclusions and entity coverage"
+      ],
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "page-level-link-earning",
+      "prompt": "for razer.com's competitors (corsair.com, logitech.com, steelseries.com) \u00e2\u20ac\u201d I want to know which of their PAGES pull the most links and what's actually earning those links. not domain level stuff, page level. what content should we be building?",
+      "expected_output": "Uses DataSiteTopPageList sorted by root_domains_to_page, skips the homepage, pulls links to the standout pages, names the tactic behind each, and checks the follow/nofollow split.",
+      "assertions": [
+        "Sorts top pages by referring domains rather than page authority",
+        "Excludes or discounts the homepage row",
+        "Names a specific replicable content tactic tied to an identified page",
+        "Checks anchor uniformity or follow/nofollow split on at least one page"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "full-run-workbook",
+      "prompt": "full backlink gap analysis for spamedica.com vs drtorgerson.com and torontosurgery.com, canadian market. need the workbook at the end with the scored targets tab filled in",
+      "expected_output": "An .xlsx with tabs 1-5 plus S1 and P1-P3, Score and Decision as live formulas, Summary counts, and flags recorded.",
+      "assertions": [
+        "Produces an .xlsx containing all ten expected tabs",
+        "Score and Decision are Excel formulas, not hardcoded values",
+        "Summary counts derive from COUNTIF over the Decision column",
+        "A high-DA but irrelevant domain scores below the Pursue threshold",
+        "The link network is recorded as a flag rather than as an opportunity"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "integrity-regressions",
+      "prompt": "Build the packaged synthetic example, then test a partial competitor set, unresolved recent link, duplicate publisher opportunities and an execution override.",
+      "expected_output": "Offline regression suite passes; workbook, markdown and normalized JSON agree.",
+      "assertions": [
+        "Unverified recent row is Verify first",
+        "Missing competitor coverage fails full build",
+        "Partial reports retain reasons and entity fractions",
+        "Unique domains differ from opportunity counts",
+        "Summary counts Decision, not Score",
+        "Product claims are sourced from approved input only"
+      ],
+      "files": [
+        "scripts/example_findings.json"
+      ]
+    }
+  ]
+}

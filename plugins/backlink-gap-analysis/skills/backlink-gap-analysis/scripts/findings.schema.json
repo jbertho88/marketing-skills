@@ -1,0 +1,987 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Backlink gap findings v2",
+  "type": "object",
+  "required": [
+    "client",
+    "client_domain",
+    "competitors",
+    "coverage"
+  ],
+  "properties": {
+    "client": {
+      "type": "string",
+      "minLength": 1
+    },
+    "client_domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_date": {
+      "type": "string",
+      "minLength": 1
+    },
+    "market": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "partial_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "competitors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "domain"
+        ],
+        "properties": {
+          "domain": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "pulled"
+        ],
+        "properties": {
+          "pulled": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "partial_reason": {
+            "type": "string"
+          },
+          "expected": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "completed": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "omitted": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "serp_benchmark": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "description": "Pos"
+          },
+          "url": {
+            "description": "Ranking URL"
+          },
+          "domain": {
+            "description": "Domain"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "pa": {
+            "description": "PA"
+          },
+          "domains_to_page": {
+            "description": "Domains -> page"
+          },
+          "links_to_page": {
+            "description": "Links -> page"
+          },
+          "indirect_domains": {
+            "description": "of which indirect"
+          },
+          "nofollow_domains": {
+            "description": "of which nofollow"
+          },
+          "domains_to_site": {
+            "description": "Domains -> site"
+          },
+          "indexed": {
+            "description": "Indexed?"
+          },
+          "mechanic": {
+            "description": "Mechanic"
+          },
+          "read": {
+            "description": "Read"
+          },
+          "keyword": {
+            "description": "Keyword"
+          },
+          "neither_indirect_nor_nofollow": {
+            "description": "Neither indirect nor nofollow (known overlap only)"
+          },
+          "indirect_nofollow_overlap": {},
+          "subsets_mutually_exclusive": {},
+          "composition_evidence": {}
+        }
+      }
+    },
+    "serp_competitors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "description": "Target Keyword"
+          },
+          "target_page": {
+            "description": "Target Page"
+          },
+          "ranking_domains": {
+            "description": "Ranking domains (top 10)"
+          },
+          "client_rank": {
+            "description": "Client position"
+          },
+          "recurring": {
+            "description": "Recurring? (SERP competitor)"
+          },
+          "overlap": {
+            "description": "Overlap with client top-25"
+          },
+          "verdict": {
+            "description": "Verdict"
+          },
+          "note": {
+            "description": "Note"
+          }
+        }
+      }
+    },
+    "link_gap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "description": "Domain"
+          },
+          "linking_page": {
+            "description": "Linking page"
+          },
+          "competitors": {
+            "description": "Links to (competitors)"
+          },
+          "n_competitors": {
+            "description": "# Competitors linking"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "spam": {
+            "description": "Spam"
+          },
+          "tf": {
+            "description": "TF"
+          },
+          "topical_tf": {
+            "description": "Topical TF"
+          },
+          "traffic": {
+            "description": "Traffic"
+          },
+          "first_seen": {
+            "description": "First Seen"
+          },
+          "note": {
+            "description": "Note"
+          },
+          "anchor": {
+            "description": "Anchor"
+          },
+          "competitor_destination": {
+            "description": "Competitor destination"
+          },
+          "evidence_status": {
+            "description": "Evidence status"
+          },
+          "date_verified": {
+            "description": "Date verified"
+          },
+          "verification_source": {
+            "description": "Verification source"
+          }
+        }
+      }
+    },
+    "recently_earned": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "description": "Domain"
+          },
+          "competitor": {
+            "description": "Competitor"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "spam": {
+            "description": "Spam"
+          },
+          "traffic": {
+            "description": "Traffic"
+          },
+          "date_gained": {
+            "description": "Date gained"
+          },
+          "in_gap": {
+            "description": "Also in gap list?"
+          },
+          "mechanism": {
+            "description": "Apparent mechanism"
+          },
+          "note": {
+            "description": "Note"
+          },
+          "linking_page": {
+            "description": "Linking page"
+          },
+          "anchor": {
+            "description": "Anchor"
+          },
+          "competitor_destination": {
+            "description": "Competitor destination"
+          },
+          "evidence_status": {
+            "description": "Evidence status"
+          },
+          "date_verified": {
+            "description": "Date verified"
+          },
+          "verification_source": {
+            "description": "Verification source"
+          }
+        }
+      }
+    },
+    "strongest_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "description": "Domain"
+          },
+          "competitor": {
+            "description": "Competitor"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "spam": {
+            "description": "Spam"
+          },
+          "follow_pages": {
+            "description": "Follow links"
+          },
+          "nofollow_pages": {
+            "description": "Nofollow links"
+          },
+          "achievable": {
+            "description": "Achievable?"
+          },
+          "route_in": {
+            "description": "Route in"
+          },
+          "linking_page": {
+            "description": "Linking page"
+          },
+          "anchor": {
+            "description": "Anchor"
+          },
+          "competitor_destination": {
+            "description": "Competitor destination"
+          },
+          "evidence_status": {
+            "description": "Evidence status"
+          },
+          "date_verified": {
+            "description": "Date verified"
+          },
+          "verification_source": {
+            "description": "Verification source"
+          }
+        }
+      }
+    },
+    "competitor_top_pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competitor": {
+            "description": "Competitor"
+          },
+          "page": {
+            "description": "Page"
+          },
+          "title": {
+            "description": "Title"
+          },
+          "pa": {
+            "description": "PA"
+          },
+          "rds": {
+            "description": "Referring domains"
+          },
+          "what_earns_links": {
+            "description": "What earns the links"
+          },
+          "dominant_anchor": {
+            "description": "Dominant anchor"
+          },
+          "first_seen_range": {
+            "description": "Links first seen"
+          },
+          "replicable": {
+            "description": "Replicable?"
+          },
+          "tactic": {
+            "description": "Tactic"
+          }
+        }
+      }
+    },
+    "page_gap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "description": "Keyword"
+          },
+          "client_page": {
+            "description": "Client page"
+          },
+          "client_rank": {
+            "description": "Client rank"
+          },
+          "competitor_page": {
+            "description": "Competitor page"
+          },
+          "competitor_rank": {
+            "description": "Competitor rank"
+          },
+          "domain": {
+            "description": "Linking domain"
+          },
+          "linking_page": {
+            "description": "Linking page"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "spam": {
+            "description": "Spam"
+          },
+          "note": {
+            "description": "Note"
+          }
+        }
+      }
+    },
+    "anchor_profile": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "description": "Page"
+          },
+          "owner": {
+            "description": "Owner"
+          },
+          "anchor": {
+            "description": "Anchor text"
+          },
+          "anchor_class": {
+            "description": "Class"
+          },
+          "root_domains": {
+            "description": "Referring domains"
+          },
+          "pages": {
+            "description": "Linking pages"
+          },
+          "note": {
+            "description": "Note"
+          }
+        }
+      }
+    },
+    "outreach_plan": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "wave": {
+            "description": "Wave"
+          },
+          "rank": {
+            "description": "#"
+          },
+          "domain": {
+            "description": "Domain"
+          },
+          "play": {
+            "description": "Play"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "angle": {
+            "description": "Angle - what we say"
+          },
+          "link_target": {
+            "description": "Link should point at"
+          },
+          "route_in": {
+            "description": "Route in"
+          },
+          "owner": {
+            "description": "Owner"
+          },
+          "status": {
+            "description": "Status"
+          },
+          "contacted": {
+            "description": "Contacted"
+          },
+          "outcome": {
+            "description": "Outcome"
+          },
+          "opportunity_id": {
+            "description": "Opportunity ID"
+          },
+          "score_decision": {
+            "description": "Score decision"
+          },
+          "execution_decision": {
+            "description": "Execution decision"
+          },
+          "override_reason": {
+            "description": "Override reason"
+          },
+          "earned_link_destination": {
+            "description": "Earned-link destination"
+          },
+          "commercial_page_supported": {
+            "description": "Commercial page supported"
+          },
+          "proof_point_ids": {
+            "description": "Proof point IDs"
+          },
+          "proof_point_note": {
+            "description": "Proof point note"
+          }
+        }
+      }
+    },
+    "listicle_targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "publisher": {
+            "description": "Publisher"
+          },
+          "page": {
+            "description": "The page"
+          },
+          "lists": {
+            "description": "What it lists"
+          },
+          "competitors_listed": {
+            "description": "Competitors on it"
+          },
+          "client_listed": {
+            "description": "Client on it?"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "route_in": {
+            "description": "Route in"
+          },
+          "angle": {
+            "description": "Pitch angle"
+          },
+          "link_target": {
+            "description": "Page to feature"
+          },
+          "owner": {
+            "description": "Owner"
+          },
+          "status": {
+            "description": "Status"
+          },
+          "opportunity_id": {
+            "description": "Opportunity ID"
+          },
+          "score_decision": {
+            "description": "Score decision"
+          },
+          "execution_decision": {
+            "description": "Execution decision"
+          },
+          "override_reason": {
+            "description": "Override reason"
+          },
+          "earned_link_destination": {
+            "description": "Earned-link destination"
+          },
+          "commercial_page_supported": {
+            "description": "Commercial page supported"
+          },
+          "proof_point_ids": {
+            "description": "Proof point IDs"
+          },
+          "proof_point_note": {
+            "description": "Proof point note"
+          }
+        }
+      }
+    },
+    "asset_roadmap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "asset": {
+            "description": "Asset"
+          },
+          "type": {
+            "description": "Type"
+          },
+          "what": {
+            "description": "What it is"
+          },
+          "evidence": {
+            "description": "Why - evidence from this run"
+          },
+          "who_links": {
+            "description": "Who would link to it"
+          },
+          "unlocks": {
+            "description": "Unlocks"
+          },
+          "effort": {
+            "description": "Effort"
+          },
+          "sequence": {
+            "description": "When"
+          },
+          "owner": {
+            "description": "Owner"
+          },
+          "status": {
+            "description": "Status"
+          },
+          "opportunity_id": {
+            "description": "Opportunity ID"
+          },
+          "score_decision": {
+            "description": "Score decision"
+          },
+          "execution_decision": {
+            "description": "Execution decision"
+          },
+          "override_reason": {
+            "description": "Override reason"
+          },
+          "earned_link_destination": {
+            "description": "Earned-link destination"
+          },
+          "commercial_page_supported": {
+            "description": "Commercial page supported"
+          },
+          "proof_point_ids": {
+            "description": "Proof point IDs"
+          },
+          "proof_point_note": {
+            "description": "Proof point note"
+          }
+        }
+      }
+    },
+    "spam_solicitation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "description": "Domain"
+          },
+          "hits": {
+            "description": "Seen linking to"
+          },
+          "where_seen": {
+            "description": "Where seen"
+          },
+          "verdict": {
+            "description": "Read"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "spam": {
+            "description": "Spam"
+          },
+          "link_propensity": {
+            "description": "Link propensity"
+          },
+          "nofollow": {
+            "description": "Nofollow?"
+          },
+          "date_seen": {
+            "description": "Date seen"
+          },
+          "signature": {
+            "description": "Signature matched"
+          },
+          "evidence": {
+            "description": "Evidence"
+          }
+        }
+      }
+    },
+    "scored_targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "linking_page": {
+            "type": "string"
+          },
+          "source": {
+            "enum": [
+              "gap",
+              "recent",
+              "strong",
+              "page"
+            ]
+          },
+          "target_page": {
+            "description": "Target Page"
+          },
+          "tactic": {
+            "description": "Tactic"
+          },
+          "da": {
+            "description": "DA"
+          },
+          "spam": {
+            "description": "Spam"
+          },
+          "traffic": {
+            "description": "Traffic"
+          },
+          "relevance": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 30
+          },
+          "authority": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 20
+          },
+          "traffic_score": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 15
+          },
+          "context": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 15
+          },
+          "spam_clean": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 10
+          },
+          "contact": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 10
+          },
+          "note": {
+            "description": "Note"
+          },
+          "opportunity_id": {
+            "type": "string"
+          },
+          "evidence_status": {
+            "enum": [
+              "Verified link page",
+              "Domain only",
+              "Needs verification",
+              "Link unavailable"
+            ]
+          },
+          "evidence_gate": {
+            "description": "Evidence gate"
+          },
+          "pa": {
+            "description": "Page PA"
+          },
+          "link_type": {
+            "description": "Follow / nofollow"
+          },
+          "anchor": {
+            "description": "Anchor"
+          },
+          "competitor_destination": {
+            "type": "string"
+          },
+          "last_crawled": {
+            "description": "Last crawled"
+          },
+          "date_verified": {
+            "type": "string"
+          },
+          "verification_source": {
+            "type": "string"
+          },
+          "n_competitors": {
+            "description": "Competitors linked"
+          },
+          "traffic_proxy": {
+            "description": "Traffic proxy"
+          },
+          "traffic_source": {
+            "description": "Traffic source"
+          },
+          "link_propensity": {
+            "description": "Link propensity"
+          },
+          "placement": {
+            "description": "Placement"
+          },
+          "route_in": {
+            "description": "Contact route"
+          },
+          "execution_decision": {
+            "enum": [
+              "Pursue now",
+              "Verify",
+              "Hold",
+              "Hygiene quick win"
+            ]
+          },
+          "override_reason": {
+            "type": "string"
+          },
+          "earned_link_destination": {
+            "description": "Earned-link destination"
+          },
+          "commercial_page_supported": {
+            "description": "Commercial page supported"
+          },
+          "relevance_evidence": {
+            "description": "relevance evidence"
+          },
+          "authority_evidence": {
+            "description": "authority evidence"
+          },
+          "traffic_score_evidence": {
+            "description": "traffic_score evidence"
+          },
+          "context_evidence": {
+            "description": "context evidence"
+          },
+          "spam_clean_evidence": {
+            "description": "spam_clean evidence"
+          },
+          "contact_evidence": {
+            "description": "contact evidence"
+          },
+          "factor_evidence": {
+            "type": "object",
+            "properties": {
+              "relevance": {
+                "type": "string",
+                "minLength": 1
+              },
+              "authority": {
+                "type": "string",
+                "minLength": 1
+              },
+              "traffic_score": {
+                "type": "string",
+                "minLength": 1
+              },
+              "context": {
+                "type": "string",
+                "minLength": 1
+              },
+              "spam_clean": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contact": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "required": [
+          "domain",
+          "source"
+        ]
+      }
+    },
+    "live_serp": {
+      "type": "object",
+      "properties": {
+        "supplied": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "queries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "approved_proof_points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "claim",
+          "source",
+          "approved_by"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approved_by": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "executive_summary": {
+      "type": "object",
+      "properties": {
+        "primary_constraint": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string"
+        },
+        "confidence_reason": {
+          "type": "string"
+        },
+        "immediate": {
+          "type": "string"
+        },
+        "next_60_days": {
+          "type": "string"
+        },
+        "strategic": {
+          "type": "string"
+        },
+        "avoid": {
+          "type": "string"
+        }
+      }
+    },
+    "measurement": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "metric"
+        ],
+        "properties": {
+          "metric": {},
+          "baseline": {},
+          "day_30": {},
+          "day_60": {},
+          "day_90": {},
+          "owner": {},
+          "source": {}
+        }
+      }
+    }
+  }
+}
