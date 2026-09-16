@@ -1,8 +1,8 @@
 # Marketing Skills
 
-Marketing skills I actually use, packaged as a Claude Code plugin marketplace. Three to start, more as I clean them up.
+Marketing skills I actually use, packaged as a Claude Code plugin marketplace. Four so far, more as I clean them up.
 
-These are not prompt templates. Each one is a full skill: instructions, reference docs, and Python that builds the deliverable. You point them at real exports and you get back a report or a workbook you can put in front of a client.
+These are not prompt templates. Each one is a full skill: instructions, reference docs, and where it helps, Python that builds the deliverable. You point them at real exports and you get back a report or a workbook you can put in front of a client.
 
 ## Install
 
@@ -22,9 +22,9 @@ To see what is on offer first:
 
 Not on Claude Code? Every skill is a plain folder under `plugins/<name>/skills/<name>/`. Copy it into whatever skills directory your tool uses. The per-skill READMEs cover platform specifics.
 
-## What is in here
+## SEO and AI search
 
-Everything here today is SEO and AI search. That is where most of my work lives.
+Where most of my work lives.
 
 ### ai-visibility-analysis
 
@@ -48,9 +48,21 @@ Screaming Frog crawl plus ranking data, out the other side as a keyword-mapped w
 
 Maps a target keyword to every page, classifies page types, assigns optimization priority, and adds a status column so the work is trackable. This is the gap between "I have data" and "I know what to optimize."
 
+## Paid search
+
+### paid-search-account-audit
+
+A full Google Ads or Microsoft Ads account audit from four report exports.
+
+It turns on one idea: cost per conversion is not one number, it is two. CPA equals average CPC divided by the click-to-conversion rate, so every diagnosis starts by splitting a rising CPA into the cost half and the quality half. The fix is completely different depending on which one moved.
+
+From there it scores every keyword into pause, rein in, hold, or scale tiers against your target, checks whether keywords are pointed at the right landing pages, and mines wasted search terms into themed negative lists. Downstream CAC overrides cost per lead, brand terms never get a blind pause, and broad keywords get their search terms checked before anyone pauses the container. Out comes a performance workbook, an action workbook with live formulas, and a written analysis that leads with decisions.
+
+The intake is the skill and it is not optional. Conversion columns in a real account almost never mean what their names suggest, and a wrong funnel mapping poisons every number downstream.
+
 ## Requirements
 
-Python 3.10+ with `openpyxl` and `python-docx` for the workbook and Word builders. The backlink and AI visibility skills work best with a Moz API subscription and the Moz MCP connector enabled, but both accept CSV exports instead.
+Python 3.10+. The workbook and Word builders want `openpyxl` and `python-docx`; the paid search audit also uses `pandas`. The backlink and AI visibility skills work best with a Moz API subscription and the Moz MCP connector enabled, but both accept CSV exports instead. The paid search audit can optionally pull keyword intent from the same connector and skips that step cleanly without it.
 
 ## Contributing
 
