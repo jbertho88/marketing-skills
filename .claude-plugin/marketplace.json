@@ -5,8 +5,8 @@
     "url": "https://jonathanberthold.com"
   },
   "metadata": {
-    "description": "Production marketing skills for Claude Code. Currently SEO and AI search: AI visibility analysis, backlink gap analysis, and keyword-mapped SEO workbooks.",
-    "version": "1.0.0"
+    "description": "Production marketing skills for Claude Code. SEO and AI search: AI visibility analysis, backlink gap analysis, and keyword-mapped SEO workbooks. Paid search: full Google Ads and Microsoft Ads account audits.",
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -44,6 +44,18 @@
       "license": "MIT",
       "category": "seo",
       "keywords": ["seo", "on-page", "keyword-mapping", "screaming-frog", "gsc", "workbook", "xlsx"]
+    },
+    {
+      "name": "paid-search-account-audit",
+      "source": "./plugins/paid-search-account-audit",
+      "description": "Audit a Google Ads or Microsoft Ads account from report exports. Split a rising CPA into its CPC and conversion rate halves, score every keyword against target with pause and scale actions, check landing page alignment, mine wasted search terms, and ship two workbooks plus a decision doc.",
+      "version": "1.0.0",
+      "author": { "name": "Jonathan Berthold", "url": "https://jonathanberthold.com" },
+      "homepage": "https://github.com/jbertho88/marketing-skills/tree/main/plugins/paid-search-account-audit",
+      "repository": "https://github.com/jbertho88/marketing-skills",
+      "license": "MIT",
+      "category": "paid-search",
+      "keywords": ["ppc", "paid-search", "google-ads", "microsoft-ads", "cpa", "cac", "keyword-audit", "negative-keywords"]
     }
   ]
 }

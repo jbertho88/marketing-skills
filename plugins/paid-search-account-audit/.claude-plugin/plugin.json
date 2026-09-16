@@ -1,0 +1,13 @@
+{
+  "name": "paid-search-account-audit",
+  "description": "Paid search account audit from report exports: CPA decomposition, keyword scoring, landing page alignment, and negative keyword mining.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jonathan Berthold",
+    "url": "https://jonathanberthold.com"
+  },
+  "homepage": "https://github.com/jbertho88/marketing-skills/tree/main/plugins/paid-search-account-audit",
+  "repository": "https://github.com/jbertho88/marketing-skills",
+  "license": "MIT",
+  "keywords": ["ppc","paid-search","google-ads","microsoft-ads","cpa","audit"]
+}
