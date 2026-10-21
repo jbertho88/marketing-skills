@@ -227,7 +227,7 @@ The execution plan translates those decisions into:
 
 Review the rationale as well as the number. A high authority metric alone does
 not establish relevance, traffic, or the quality of a particular linking page.
-See [Scoring methodology](references/scoring.md) for the full rules.
+See [Scoring methodology](skills/backlink-gap-analysis/references/scoring.md) for the full rules.
 
 ## Working with exports
 
@@ -246,8 +246,8 @@ filters or row limits. Metrics from different providers must retain their source
 similarly named authority scores are not interchangeable. Do not relabel one
 provider's metric as Moz Domain Authority or Page Authority.
 
-For column guidance, see [CSV inputs](references/csv-ingest.md). The stricter
-coverage and evidence rules in [SKILL.md](SKILL.md) govern final reporting.
+For column guidance, see [CSV inputs](skills/backlink-gap-analysis/references/csv-ingest.md). The stricter
+coverage and evidence rules in [SKILL.md](skills/backlink-gap-analysis/SKILL.md) govern final reporting.
 
 ## How to use the results
 
@@ -295,8 +295,8 @@ competitor, page, or stage to revisit. State whether fresh API research is neede
 
 ## Further reference
 
-- [Full skill workflow](SKILL.md)
-- [Live Moz call guidance](references/moz-calls.md)
-- [Page benchmark methodology](references/serp-benchmark.md)
-- [Opportunity scoring](references/scoring.md)
-- [CSV input guidance](references/csv-ingest.md)
+- [Full skill workflow](skills/backlink-gap-analysis/SKILL.md)
+- [Live Moz call guidance](skills/backlink-gap-analysis/references/moz-calls.md)
+- [Page benchmark methodology](skills/backlink-gap-analysis/references/serp-benchmark.md)
+- [Opportunity scoring](skills/backlink-gap-analysis/references/scoring.md)
+- [CSV input guidance](skills/backlink-gap-analysis/references/csv-ingest.md)

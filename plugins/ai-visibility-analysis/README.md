@@ -120,7 +120,7 @@ customer research or verify source pages automatically.
 Scored prompt and citation CSVs are delivered alongside the base report package.
 The existing report builders do not automatically add these new scores to Word
 or Excel. Ask for report/workbook integration if you want them included there.
-See [Business priority methodology](references/business-priority.md) for formulas,
+See [Business priority methodology](skills/ai-visibility-analysis/references/business-priority.md) for formulas,
 input fields, evidence requirements, and helper commands.
 
 ## Optional live Moz MCP enrichment
