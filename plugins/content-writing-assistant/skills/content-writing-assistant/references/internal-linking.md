@@ -1,5 +1,7 @@
 # Internal linking from a sitemap crawl
 
+You usually fetched the sitemap already at Step 0.5 (the existing-page check). Reuse those files here, and carry any same-query or partial-overlap pages found there into the cannibalisation notes below.
+
 ## 1. Find the sitemap
 
 Try in order and stop at the first that works:
@@ -8,7 +10,7 @@ Try in order and stop at the first that works:
 3. `https://<domain>/sitemap_index.xml`
 4. Common CMS paths: `/wp-sitemap.xml` (WordPress core), `/sitemap-index.xml`, `/post-sitemap.xml`, `/page-sitemap.xml`
 
-If the result is a sitemap index, open the child sitemaps that plausibly hold content (posts, pages, services, locations, guides). Skip image, video, tag, author and product-variant sitemaps unless the topic needs them.
+If the result is a sitemap index, open the child sitemaps that plausibly hold content (posts, pages, services, locations, guides). Fetch child sitemap URLs exactly as listed, query string included: Shopify child sitemaps (`sitemap_pages_1.xml?from=...&to=...`) return nothing without it. Product sitemaps are also worth a look when a brief names products or brands, because they show what the client actually stocks. Skip image, video, tag, author and product-variant sitemaps unless the topic needs them.
 
 If no sitemap is reachable, say so and fall back to: the user supplying a URL list or crawl export, or a `site:<domain> <topic>` web search to find candidate pages. Record which fallback you used.
 

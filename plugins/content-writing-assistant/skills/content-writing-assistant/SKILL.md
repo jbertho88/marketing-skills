@@ -16,9 +16,9 @@ Read `references/helpful-content.md` once at the start of every run. It is the q
 | Mode | Trigger | Starting point |
 |---|---|---|
 | **New article** (default) | A content brief for a page that does not exist yet | Blank page |
-| **Refresh** | The user gives a live URL to improve, update, rewrite, re-optimize, or "fix because it dropped" | The existing page |
+| **Refresh** | The user gives a live URL to improve, update, rewrite, re-optimize, or "fix because it dropped"; or Step 0.5 finds the page already live | The existing page |
 
-Pick the mode at intake. If a brief arrives with a URL and it is unclear whether that URL is the page to improve or just a reference, ask. In Refresh mode, read `references/refresh-mode.md` and follow its additions to the steps below; every other step still applies.
+Pick the mode at intake, and confirm it after Step 0.5. If a brief arrives with a URL and it is unclear whether that URL is the page to improve or just a reference, ask. In Refresh mode, read `references/refresh-mode.md` and follow its additions to the steps below; every other step still applies.
 
 Both modes end in the same place: a **draft that is not approved for publishing** until a human signs off (Step 11). This skill drafts and analyzes. People with real expertise supply experience, verify facts and approve.
 
@@ -30,7 +30,7 @@ Both modes end in the same place: a **draft that is not approved for publishing*
 | Brand brief | Strongly preferred | Voice, tone, banned words, compliance rules, approved claims, author roster, house style. |
 | SERP | Preferred | The user's own top-10 URLs for the keyword (pasted list, CSV, or tool export). |
 | Client domain | Yes for internal linking | Needed to find the sitemap. Often in the brief. |
-| Author | Optional | Name and credentials. If absent, pull from the brand brief roster or ask. |
+| Author | Optional | Name and credentials. If absent, pull from the brand brief roster or ask. Many brands publish unsigned; that is a valid answer (Step 7). |
 | Voice skill | Optional | If the user names a personal or brand voice skill that is installed, load it and layer it on top of the brand brief. The brand brief's hard rules still win on conflict. |
 
 Read both briefs in full before doing anything else. Brand briefs often hide hard constraints in odd places (a compliance tab, a footnote, a "never say" list). A regulated client (law, health, finance) can have rules that make an otherwise good sentence unpublishable, so treat every constraint in the brand brief as a gate, not a suggestion.
@@ -48,7 +48,45 @@ Extract what you can from the briefs, then ask about only what is missing **and*
 
 If the user is not around to answer, take the most reasonable reading, state it at the top of the deliverable under **Assumptions**, and proceed.
 
+### When the two briefs disagree
+
+Content briefs and brand briefs are written by different people at different times, and they contradict each other more often than not: a brand listed as never-name that the client now sells, a figure quoted three ways, a heading rule one brief breaks. Resolve each conflict with this order, and log every one in the brief synthesis under **Conflicts**:
+
+1. **Hard brand rules win.** Legal, compliance, regulator, safety, trademark and banned-word rules in the brand brief beat anything in the content brief.
+2. **Evidence beats either brief** on facts that can be checked: what the client sells, current figures, live URLs, product specs. Check the client's live site (product or collection sitemaps, the source pages each brief cites). If the site settles it, follow the site and say which page settled it.
+3. **Newer and more specific wins** on everything else: a dated revision over an older one, a rule written for this article over a general house rule.
+4. **Still unresolved, and it changes what gets published?** Do not pick. Write around it or leave a placeholder, and list it as an open item for the person who owns that fact.
+
+Never resolve a conflict silently. The person approving the article needs to see what you decided and why.
+
+### Recognise the brand's own conventions
+
+While reading the brand brief, note four things the later steps depend on:
+- **Byline policy.** Named author, roster to choose from, or unsigned. Many brands publish without bylines (Step 7)
+- **Approval flow.** Who reviews, in what order, who has final say, who approves quotes (Step 11)
+- **Placeholder convention.** If the brief defines a format for missing quotes or facts (for example `[[QUOTE: ...]]`), use it in the article instead of this skill's default markers. Strip any character the brief's own style rules ban
+- **Delivery rules.** Some briefs require a clean, publication-ready document with no editor notes. Step 12 always produces one
+
 Write the intake down as a short **Brief synthesis** (see `references/output-template.md`). It is the contract the rest of the run is checked against.
+
+## Step 0.5: Check whether the page already exists
+
+Before any research, check whether the client already has this page, or one competing for the same query. Two common situations make the brief wrong without anyone noticing: the brief's slug was already published from an earlier draft, or an older post on the site targets the same keyword. Writing a second page splits rankings and links between them.
+
+1. **Fetch the client sitemap** (robots.txt first, then `/sitemap.xml`; keep any query strings on child sitemap URLs, which Shopify needs). Run `scripts/sitemap_filter.py <sitemaps> --terms <primary keyword> --slug <brief slug>`. It reports an exact slug match, near matches and the strongest keyword matches
+2. **Search the web** for `site:<client domain> <primary keyword>` and for the primary keyword itself. Note any client URL that ranks
+3. **Read any candidate** whose title, H1 or main heading targets the same question. Slug similarity alone is not enough
+
+Then decide:
+
+| Finding | Action |
+|---|---|
+| The brief's slug is already live | Switch to **Refresh** mode on that URL. Do not write a duplicate. Tell the user straight away |
+| Another client page targets the same query | Recommend one page: refresh the existing URL (it keeps its age and links) or publish new and 301 the old one. Ask which if the user is present; otherwise default to the existing URL and say so |
+| A client page covers part of the topic | Proceed. Link to it, keep the new page's angle distinct, and list it as a cannibalisation watch in the linking plan |
+| Nothing found | Proceed as a new article |
+
+If you switch mode or recommend a different URL, say so in a message before continuing. It changes what the user gets.
 
 ## Step 1: Keyword data
 
@@ -108,7 +146,7 @@ Apply the brand brief to every sentence, plus a named voice skill if the user as
 - One idea per paragraph; vary sentence length
 - Every claim a reader might doubt gets a source, an example, or the author's direct experience
 - Add something the ranking pages lack: original analysis, a worked example, a clearer framework, first-hand experience. Rewording sources is not value
-- **First-hand experience is the strongest differentiator and the one thing you cannot supply yourself.** Where the brief or author provides it, use it. Where it does not, leave a clearly marked `[EXPERT INPUT: ...]` placeholder rather than inventing an anecdote, statistic, client story or quote. Google's guidance calls fabricated creators and false credentials deceptive; fabricated experience is the same problem
+- **First-hand experience is the strongest differentiator and the one thing you cannot supply yourself.** Where the brief or author provides it, use it. Where it does not, leave a clearly marked `[EXPERT INPUT: ...]` placeholder (or the brand's own placeholder format) rather than inventing an anecdote, statistic, client story or quote. Google's guidance calls fabricated creators and false credentials deceptive; fabricated experience is the same problem
 - No filler intros, no recap-only conclusions, no keyword stuffing
 - Primary keyword in H1, the opening paragraph, at least one H2 and the meta title; secondary terms where they fit naturally
 
@@ -120,7 +158,11 @@ Apply the brand brief to every sentence, plus a named voice skill if the user as
 
 ## Step 7: Author bio (the "who")
 
-Read `references/author-bio-and-eeat.md`. Write the bio from verified facts only, relevant to **this** topic. If the brand brief has an approved bio, adapt it. Missing credentials get `[VERIFY: ...]` markers. Output Person schema fields.
+Read `references/author-bio-and-eeat.md`. First check the byline policy you noted at intake:
+
+- **Named author:** write the bio from verified facts only, relevant to **this** topic. If the brand brief has an approved bio, adapt it. Missing credentials get `[VERIFY: ...]` markers. Output Person schema fields.
+- **Unsigned (no byline by policy):** write no bio and invent no author. Use the Organization as `author` in the schema, note the policy in the package, and carry trust through the brand's verifiable credentials, cited sources and any approved expert quote instead. If the brand brief lists byline candidates, name them as a recommendation only.
+- **Not stated:** ask. If nobody can answer, treat it as unsigned rather than guessing a name.
 
 ## Step 8: Multimedia plan
 
@@ -128,44 +170,58 @@ Read `references/multimedia-plan.md`. Plan every image, diagram, table and video
 
 ## Step 9: Meta, schema and the "how" note
 
-- Meta title (aim 50 to 60 characters), meta description (aim 140 to 160), URL slug, H1
-- JSON-LD from `references/schema.md`: Article/BlogPosting, Person, Organization, BreadcrumbList; FAQPage only for a visible FAQ that matches exactly; VideoObject only for a real embedded video
+- Meta title (aim 50 to 60 characters), meta description (aim 140 to 160), URL slug, H1. If the brief sets its own limits or supplies the meta text, the brief wins
+- JSON-LD from `references/schema.md`: Article/BlogPosting, Organization, BreadcrumbList, plus Person only for a named author (unsigned pages use the Organization as author); FAQPage only for a visible FAQ that matches exactly; VideoObject only for a real embedded video
 - **AI-assistance disclosure recommendation**: Google advises disclosing automation where readers would reasonably wonder how content was made. Recommend whether this page needs a disclosure line (likely for reviews, data pieces and YMYL topics) and draft one in the brand's voice. The publisher decides; do not insert it into the body unless the brand brief requires it
 
 ## Step 10: Self-check
 
-Run the checklist at the end of `references/output-template.md` and fix what fails.
+First run the mechanical checks with `scripts/brief_check.py`. Build a small JSON spec from the briefs (word-count range, keyword targets, banned terms, banned characters, meta limits, required links), then:
+
+```bash
+python scripts/brief_check.py <slug>-article.md --spec spec.json
+```
+
+It reports word count, keyword counts against targets (flagging both misses and stuffing), banned terms and characters, meta lengths, duplicate and missing links, and every open placeholder. `python scripts/brief_check.py --example` prints a spec to start from. Fix what fails and rerun until it's clean, or note in the package why a flag stands (for example, a brief-mandated FAQ question that repeats the primary keyword).
+
+Then work through the judgement checklist at the end of `references/output-template.md` and fix what fails.
 
 ## Step 11: Publishing sign-off (required)
 
 Every package ends with the sign-off block from `references/output-template.md`, and the package header carries the status line **"DRAFT. Not approved for publishing."** until every required role is signed. Google's guidance treats AI text published without human oversight as low effort, and in regulated fields an unreviewed claim is a liability for the publisher, so this is a hard stop, not a formality.
 
+**Use the brand's own approval flow when it has one.** If the brand brief names who reviews, who approves quotes and who has final say, build the block from those people and steps, in that order. Fall back to the six default roles in `references/output-template.md` only when the brief is silent. Whichever you use, make sure these jobs are covered by someone: expert input, fact-checking, brand and compliance, technical and SEO, quote approval for every quoted person, and final approval. If a person the briefs name as an approver is missing from the brand brief's governance list, flag it.
+
 Fill the block as far as you honestly can:
-- List every open `[EXPERT INPUT]`, `[VERIFY]` and `[PLACEHOLDER]` item against the role that must clear it
+- List every open `[EXPERT INPUT]`, `[VERIFY]` and `[PLACEHOLDER]` item (or the client's own placeholder format) against the role that must clear it
 - Mark the expert reviewer role **required** for any YMYL topic or any author without verified credentials for this topic; otherwise recommended
+- Keep contact details (emails, phone numbers) and anything credential-related out of the block. Names and roles are enough
 - Leave names, dates and status blank unless the user supplied them. Never mark a role signed on the user's behalf, and never remove the draft status line yourself. If the user later confirms sign-offs in the conversation, fill them in and update the status line in a new version
 
 ## Step 12: Deliver
 
-Deliver the package in this order:
+Every run delivers **two documents**, each as Markdown and Word. Layouts are in `references/output-template.md`.
 
-1. Brief synthesis and assumptions
-2. Keyword data summary
-3. SERP report (findings first, page table second)
-4. Article: meta block, then the full article with links in place and media slots marked inline
-5. Author bio block
-6. Multimedia plan
-7. Internal linking plan
-8. JSON-LD schema
-9. Quality results: compliance checks, helpful content self-assessment, and every open `[EXPERT INPUT]`, `[VERIFY]` and `[PLACEHOLDER]` item in one list
-10. Publishing sign-off block
+1. **The clean article** (`<slug>-article`): SEO title, meta description, URL slug, then the article itself: H1, body with internal links in place, FAQ, CTA and any required disclaimer or tagline. **No editor notes of any kind.** The only non-final text allowed is placeholders for facts or quotes a named person still owes, in the brand's placeholder format if it has one. This is the file that goes to the client and into the CMS.
+2. **The content package** (`<slug>-content-package`): everything else, for the strategist, editor and approvers:
+   1. Brief synthesis, conflicts between the briefs, assumptions
+   2. Keyword data summary
+   3. SERP report (findings first, page table second)
+   4. Article copy with media slots marked
+   5. Author bio block (or the unsigned block)
+   6. Multimedia plan
+   7. Internal linking plan
+   8. JSON-LD schema
+   9. Quality results: brief_check.py output, compliance checks, helpful content self-assessment, every open placeholder in one list
+   10. Publishing sign-off block
 
-In Refresh mode, insert the **page diagnosis** and **change log** from `references/refresh-mode.md` after the SERP report, and present the article as the revised version.
+   In Refresh mode, insert the **page diagnosis**, **change log** and **measurement baseline** from `references/refresh-mode.md` after the SERP report, and present the article as the revised version. If research turned up errors elsewhere on the client's site, list them in the package for the client; don't fix them silently.
 
-**Format: Markdown and Word, every run.**
-- Write the full package to `<slug>-content-package.md`. Markdown pastes cleanly into any CMS
-- Then build `<slug>-content-package.docx` with the same content. Read the docx skill's SKILL.md before building it if one is available; otherwise use `scripts/md_to_docx.py`, which converts the Markdown package with headings, lists, tables, links and code blocks intact. Open or render the .docx once to confirm it is readable
-- Send both files to the user. Keep the article copy free of commentary; editor notes live in the surrounding sections
+**Building the files.**
+- Write both as Markdown first. Markdown pastes cleanly into any CMS
+- Convert each with `scripts/md_to_docx.py <file>.md <file>.docx`. It handles headings, lists, tables, links and code blocks, and highlights placeholders in yellow for reviewers. (A docx skill, if one is installed, is for editing existing Word files or building from scratch in code; it has no Markdown route, so don't rebuild a converter.)
+- Render each .docx once and look at it. If the docx skill is installed, its render step (LibreOffice to PDF to page images) works well
+- Send all four files to the user, and say in your message that the article is a draft pending the sign-offs listed in the package
 
 ## Principles worth remembering
 
@@ -174,6 +230,8 @@ In Refresh mode, insert the **page diagnosis** and **change log** from `referenc
 - Unknown is not zero: an unfetched page, an approximated SERP, a missing volume, an unverified credential
 - Never invent experience, statistics, quotes, credentials or reviews. Placeholders are honest; fabrication is a liability for the publisher
 - No word count targets, no fake freshness. Update dates only when content meaningfully changes
-- Nothing ships unsigned. The package is a draft until named humans clear the sign-off block
+- Nothing publishes without sign-off. The article is a draft until named humans clear the sign-off block
+- When the briefs disagree, hard brand rules win, evidence beats either brief, and every decision gets logged
+- Check whether the page already exists before writing it
 - In a refresh, keep what already earns traffic and links. Rewriting a working page from scratch is a risk, not a default
 - The SERP shows the floor and the gap. The gap is why the page deserves to exist

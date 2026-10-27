@@ -2,7 +2,7 @@
 
 Created by: Jonathan Berthold, VP Revenue of Moz
 
-Last updated: October 21, 2026
+Last updated: October 27, 2026
 
 Hand it a content brief and a brand brief, get back a publish-ready draft that
 beats what ranks instead of averaging it. The skill reads the live search results,
@@ -36,8 +36,8 @@ to build the Word file. Pasting the instructions alone does not provide those
 capabilities.
 
 The helper scripts need Python 3.10 or later, with `beautifulsoup4` for page
-analysis and `python-docx` for the Word file. If a docx skill is already installed,
-the assistant uses that instead. You do not need to write Python to use the skill.
+analysis and `python-docx` for the Word files. You do not need to write Python
+to use the skill.
 
 ### Connect an SEO data source (optional)
 
@@ -59,10 +59,10 @@ Do not paste API secrets into your prompts or briefs.
 | Input | What to include | Why it matters |
 |---|---|---|
 | Content brief | Target keyword, audience, intent, angle, call to action, and the commercial page to support. Any format. | Defines what the page has to do. |
-| Brand brief | Voice, tone, banned words, compliance rules, approved claims, author roster. | Hard rules here override everything, including what competitors do. |
+| Brand brief | Voice, tone, banned words, compliance rules, approved claims, byline policy, approval flow. | Hard rules here override everything, including what competitors do. The byline policy and approval flow shape the author block and sign-off. |
 | Search results, if available | The top 10 URLs from your rank tracker, with market and collection date. | A real SERP beats web search, which shifts with location and personalisation. |
 | Client domain | The site the article will live on. | The skill crawls the sitemap to choose internal links. |
-| Author details | Name, role, credentials, and real first-hand experience with the topic. | Experience is the one thing the skill cannot supply, and the strongest differentiator. |
+| Author details | Name, role, credentials, and real first-hand experience with the topic. Or tell it the brand publishes unsigned. | Experience is the one thing the skill cannot supply, and the strongest differentiator. |
 | Live URL (refreshes) | The page to improve. | Switches the skill into refresh mode. |
 | Search Console export (refreshes) | Queries, clicks, impressions, and position for the URL, ideally before and after any drop. | Identifies the queries the page already earns so the refresh protects them. |
 | Voice skill, if you have one | The name of an installed personal or brand voice skill. | Layered on top of the brand brief. Brand rules still win on conflict. |
@@ -119,46 +119,63 @@ check today. Update the sign-off block and reissue the package.
 
 1. **Intake.** Reads both briefs, asks about gaps, and runs the "why" test: would
    this audience want the page if they landed on it directly? Briefs that read
-   as traffic-chasing are flagged before any writing happens.
-2. **Keyword data.** Pulled from whatever connector is available, in the right market.
-3. **Search results.** Your export first, web search as fallback. Snippets, People
+   as traffic-chasing are flagged before any writing happens. Where the two briefs
+   contradict each other, it resolves each conflict by a fixed order (below) and
+   logs every decision.
+2. **Existing-page check.** Before any research, it checks the client's sitemap and
+   the search results for the brief's URL and keyword. If the page is already live,
+   it switches to refresh mode instead of writing a duplicate. If an older post
+   targets the same query, it recommends one page rather than two.
+3. **Keyword data.** Pulled from whatever connector is available, in the right market.
+4. **Search results.** Your export first, web search as fallback. Snippets, People
    Also Ask, video, forums and AI overviews shape the format.
-4. **Page analysis.** Structure, depth, media, trust signals, and a helpful content
+5. **Page analysis.** Structure, depth, media, trust signals, and a helpful content
    read on each ranking page. Pages it cannot fetch are reported as unknown, never zero.
-5. **Outline.** The floor (what every ranking page covers) plus the gaps (what none
+6. **Outline.** The floor (what every ranking page covers) plus the gaps (what none
    cover well), in the order a searcher needs answers. Gap sections are marked.
-6. **Internal links.** Sitemap crawl, shortlist, then the candidate pages are read
+7. **Internal links.** Sitemap crawl, shortlist, then the candidate pages are read
    before any link is chosen. Pages competing for the same keyword are flagged.
-7. **Draft.** Brand voice, answer first, specifics over adjectives. Then a brand
+8. **Draft.** Brand voice, answer first, specifics over adjectives. Then a brand
    compliance pass and a helpful content pass.
-8. **The rest of the page.** Author bio, multimedia plan, meta tags, schema, and a
+9. **The rest of the page.** Author bio (or none, if the brand publishes unsigned), multimedia plan, meta tags, schema, and a
    recommendation on whether to disclose AI assistance.
-9. **Self-check and sign-off block.**
-10. **Delivery** as Markdown and Word.
+10. **Self-check.** A script checks word count, keyword targets, banned words and
+    characters, meta lengths and links against the briefs; then a judgement checklist.
+11. **Sign-off block**, built from the brand's own approval flow when the brand
+    brief describes one.
+12. **Delivery:** a clean article and a separate content package, each as Markdown and Word.
 
 Refreshes add a baseline capture before anything changes, a diagnosis, and a
 keep, update, expand, rewrite, cut, merge or add decision for every original section.
 
 ## What you receive
 
-One content package as `<slug>-content-package.md` and `<slug>-content-package.docx`.
-Markdown pastes cleanly into any CMS. The Word file is for client review, with
-every open placeholder highlighted in yellow.
+Two documents, each as Markdown and Word:
+
+- **`<slug>-article`**: the clean, publication-ready article. SEO title, meta
+  description, URL slug, body, FAQ and CTA, with internal links in place. No editor
+  notes, no research, no callouts. This is the file for the client and the CMS. The
+  only unfinished text is placeholders for facts or quotes a named person still owes,
+  in your brand's placeholder format if it has one.
+- **`<slug>-content-package`**: the internal working document for the strategist,
+  editor and approvers. It contains:
 
 | # | Section | What is in it |
 |---|---|---|
-| 1 | Brief synthesis | Keyword, audience, intent, angle, brand rules applied, assumptions |
+| 1 | Brief synthesis | Keyword, audience, intent, angle, brand rules applied, existing-page check, conflicts between the briefs and how each was resolved, assumptions |
 | 2 | Keyword data | Volumes, difficulty, secondaries and questions, with the source named |
 | 3 | SERP report | Verdict, floor, gaps, what to avoid, and a page-by-page table |
 | 4 | Article | Meta title, meta description, slug, H1, and the full draft with links and media slots in place |
-| 5 | Author bio | Byline and short bio built from verified facts only |
+| 5 | Author bio | Byline and short bio built from verified facts only, or a note that the page runs unsigned |
 | 6 | Multimedia plan | Every image, diagram, table and video slot with placement, brief, file name, alt text and caption |
 | 7 | Internal linking plan | Links out of the article, plus existing pages that should link in |
 | 8 | Schema | One JSON-LD block. FAQ markup only for a visible FAQ |
-| 9 | Quality results | Compliance checks, helpful content self-assessment, and every open item |
-| 10 | Publishing sign-off | Roles, the open items each must clear, and blank name, date and status fields |
+| 9 | Quality results | Automated brief check, compliance checks, helpful content self-assessment, and every open item |
+| 10 | Publishing sign-off | Your approval steps, the open items each must clear, and blank name, date and status fields |
 
 Refreshes also include a page diagnosis, a change log and a measurement baseline.
+Markdown pastes cleanly into any CMS. In the Word files, open placeholders are
+highlighted in yellow.
 
 ## The ground rules
 
@@ -178,12 +195,25 @@ These are deliberate. They are why the output is safe to put in front of a clien
   and unverified credentials are all labelled.
 - **Refreshes protect what works.** The URL, earned queries, heading anchors and
   linked-to content are kept unless there is a reason to change them.
-- **Nothing ships unsigned.** See below.
+- **Check before writing.** If the page already exists, it refreshes it rather
+  than publishing a duplicate.
+- **Conflicts get resolved in the open.** When the content brief and brand brief
+  disagree: hard brand rules (legal, compliance, safety, banned words) always win;
+  evidence from the live site beats either brief on checkable facts like what's in
+  stock; otherwise the newer, more specific instruction wins. Anything still
+  unresolved becomes a placeholder for the person who owns it. Every decision is
+  logged in the package.
+- **No invented authors.** If the brand publishes unsigned, the page stays unsigned.
+- **Nothing publishes without sign-off.** See below.
 
 ## The sign-off block
 
 Every package opens with **"DRAFT. Not approved for publishing."** and ends with
-a sign-off table. Each open placeholder is mapped to the role that clears it.
+a sign-off table. Each open placeholder is mapped to the person who clears it.
+
+If your brand brief describes an approval flow (who reviews, who approves quotes,
+who has final say), the table follows it, with names and roles from the brief.
+If it doesn't, the skill uses these default roles:
 
 | Role | When required |
 |---|---|
@@ -200,6 +230,16 @@ human review is exactly what Google's guidance warns against, which is why this
 step is not optional.
 
 ## Common questions
+
+**Why two files?**
+Many clients want a clean, publication-ready document with no editor notes, and
+every reviewer reads faster without a research report wrapped around the copy.
+The article file goes to the client; the package explains and checks it.
+
+**What if the article already exists on the site?**
+The skill checks before researching. If the brief's URL is already live, it switches
+to refresh mode and tells you. If an older post targets the same search, it
+recommends updating that URL (or redirecting it) instead of publishing a second page.
 
 **Do I need an SEO tool subscription?**
 No. It works from the briefs, the search results and web search. A connector adds
@@ -238,6 +278,7 @@ SERP export or saved pages fills the gap.
 - [Internal linking](skills/content-writing-assistant/references/internal-linking.md)
 - [Refresh mode](skills/content-writing-assistant/references/refresh-mode.md)
 - [Package layout and self-check](skills/content-writing-assistant/references/output-template.md)
+- [Brief check script](skills/content-writing-assistant/scripts/brief_check.py) (run with `--example` for a starter spec)
 
 ## Install
 

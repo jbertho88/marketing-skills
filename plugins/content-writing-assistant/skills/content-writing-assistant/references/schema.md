@@ -8,6 +8,8 @@ Rules:
 
 ## Base graph (Article + Person + Organization + Breadcrumb)
 
+For an unsigned page (no byline by brand policy), set the article's `author` to the Organization `@id` and drop the Person node. Never add a Person for someone the brand has not confirmed as the author.
+
 ```json
 {
   "@context": "https://schema.org",

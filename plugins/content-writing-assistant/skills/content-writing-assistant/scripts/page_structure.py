@@ -58,8 +58,15 @@ def analyze(path):
         if t.get("type") != "application/ld+json":
             t.decompose()
     types = schema_types(soup)
-    for t in soup(["nav", "header", "footer", "aside", "form"]):
+    # Read H1s before stripping chrome: article H1s often sit inside an <header>
+    # element nested in <article>, which the chrome strip below would delete.
+    h1s = [h.get_text(" ", strip=True) for h in soup.find_all("h1")]
+    for t in soup(["nav", "footer", "aside", "form"]):
         t.decompose()
+    # Only strip site-level headers, not headers nested inside article/main content.
+    for t in soup.find_all("header"):
+        if not t.find_parent(["article", "main"]):
+            t.decompose()
     main = main_node(soup)
     text = main.get_text(" ", strip=True)
     outline = [f"{h.name.upper()}: {h.get_text(' ', strip=True)}" for h in main.find_all(["h2", "h3"])]
@@ -68,7 +75,7 @@ def analyze(path):
     return {
         "file": path,
         "title": soup.title.get_text(strip=True) if soup.title else None,
-        "h1": [h.get_text(" ", strip=True) for h in soup.find_all("h1")],
+        "h1": h1s,
         "word_count_approx": len(text.split()),
         "h2_count": sum(1 for o in outline if o.startswith("H2")),
         "outline": outline,

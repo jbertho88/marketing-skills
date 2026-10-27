@@ -15,7 +15,10 @@
         "Includes a helpful content self-assessment table",
         "Package header carries the DRAFT status line and ends with the sign-off block",
         "Expert reviewer is marked required because the topic is health",
-        "Delivers both a .md and a .docx file"
+        "Delivers both a .md and a .docx file",
+        "Runs the existing-page check (sitemap and site: search) before keyword and SERP research",
+        "Delivers a clean article file with no editor notes, plus a separate content package, each as .md and .docx",
+        "Runs brief_check.py and reports its result in the package"
       ],
       "files": []
     },
@@ -48,7 +51,36 @@
         "Cites primary sources such as statutes or official bodies for legal claims",
         "Compliance results list the brand rules that were checked",
         "Expert reviewer is marked required in the sign-off block",
-        "Does not invent case results, client testimonials or success rates"
+        "Does not invent case results, client testimonials or success rates",
+        "Builds the sign-off block from the brand brief's approval flow if it describes one",
+        "Clean article file contains no SERP report, rationale or editor notes"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "brief-slug-already-live",
+      "prompt": "content brief and brand brief attached for a window and door installer. brief wants a new whitepage at /whitepages/triple-pane-vs-double-pane.html targeting \"triple pane vs double pane windows\". 1,000 words, unsigned like all their whitepages. go ahead",
+      "expected_output": "Before research, checks the client sitemap and finds whether the slug or a same-query page already exists. If it does, tells the user, switches to refresh mode on that URL (or recommends one page plus a 301) instead of writing a duplicate. Writes no author bio because the brand publishes unsigned.",
+      "assertions": [
+        "Checks the client sitemap for the brief's slug and the primary keyword before keyword or SERP research",
+        "If the slug or a same-query page exists, says so in a message and does not produce a duplicate new page",
+        "Uses the Organization as schema author and writes no invented byline or bio",
+        "Mandated length followed and flagged only if it forces padding or cutting"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "briefs-contradict-each-other",
+      "prompt": "writing a 'best pellet grills' guide for a bbq retailer. content brief and brand brief attached. heads up the content brief was written a while ago, the brand brief was refreshed last month. content brief says don't mention one of the brands, brand brief says they started carrying it. also the content brief wants the quote placeholder as [[QUOTE: name]] format",
+      "expected_output": "Logs every conflict between the briefs in a conflicts table with how it was resolved; checks the retailer's live site (collection or product sitemap) to settle what is stocked; applies hard brand rules over the content brief; uses the brief's [[QUOTE: ...]] placeholder format in the clean article; leaves anything still unresolved as a placeholder with an owner.",
+      "assertions": [
+        "Brief synthesis contains a conflicts table listing each disagreement and its resolution",
+        "Checks the live site to settle the stocked-brand conflict and names the URL that settled it",
+        "Hard brand rules from the brand brief are applied even where the content brief differs",
+        "Clean article uses the [[QUOTE: ...]] placeholder format the brief defines",
+        "Unresolved conflicts become placeholders listed as open items with an owner, not silent choices"
       ],
       "files": []
     }

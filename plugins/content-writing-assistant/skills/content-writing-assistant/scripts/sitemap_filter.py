@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
-"""Shortlist internal-link candidates from sitemap files.
+"""Check for an existing page and shortlist internal-link candidates from sitemap files.
 
 Usage:
-  python sitemap_filter.py sitemap.xml [more.xml|urls.txt ...] --terms "kw one" "kw two" [--top 40] [--csv out.csv]
+  python sitemap_filter.py sitemap.xml [more.xml|urls.txt ...] --terms "primary keyword" "other term" \
+      [--slug /blog/brief-slug] [--top 40] [--csv out.csv]
 
 Accepts sitemap XML (urlset or sitemapindex) or plain text files with one URL per line.
-Scores each URL by how many topic-term tokens appear in its path, drops non-content
-paths, and prints a ranked shortlist. If a file is a sitemap index, the child sitemap
-URLs are printed so you can fetch them next.
+
+Existing-page check (Step 0.5), printed first:
+  - --slug: exact match for the brief's planned URL path, plus near matches
+  - The FIRST --terms value is treated as the primary keyword: URLs whose path contains
+    at least 75% of its words are listed as possible same-query pages
+  These are candidates only. Open each one and read its title and H1 before deciding.
+
+Link shortlist (Step 5): scores each URL by how many term tokens appear in its path,
+drops non-content paths, and prints a ranked list. If a file is a sitemap index, the
+child sitemap URLs are printed so you can fetch them next (keep their query strings).
 """
 import argparse
 import csv
@@ -36,6 +44,60 @@ def stem(t):
     return t
 
 
+def norm_path(u):
+    p = urlparse(u).path if "://" in u else u
+    p = "/" + p.strip("/")
+    return re.sub(r"\.(html?|php|aspx?)$", "", p.lower())
+
+
+def slug_tokens(path):
+    last = norm_path(path).rsplit("/", 1)[-1]
+    return {stem(t) for t in tokens(last)}
+
+
+def existing_page_report(all_urls, slug, primary):
+    print("== Existing-page check")
+    found = False
+    if slug:
+        target = norm_path(slug)
+        exact = [u for u in all_urls if norm_path(u) == target or norm_path(u).endswith(target)]
+        if exact:
+            found = True
+            print(f"  EXACT SLUG MATCH for {slug}: the planned URL already exists.")
+            for u in exact:
+                print(f"    {u}  {all_urls[u]}")
+        st = slug_tokens(slug)
+        near = []
+        for u in all_urls:
+            if u in exact or not st:
+                continue
+            ut = slug_tokens(u)
+            if ut and len(st & ut) / len(st | ut) >= 0.6:
+                near.append(u)
+        if near:
+            found = True
+            print(f"  Near matches for slug {slug}:")
+            for u in near[:10]:
+                print(f"    {u}  {all_urls[u]}")
+    if primary:
+        need = {stem(t) for t in tokens(primary)}
+        # Most words of the keyword in the path: URLs often drop a location or year word.
+        same = []
+        for u in all_urls:
+            have = need & {stem(t) for t in tokens(urlparse(u).path)}
+            if len(need) and len(have) >= 2 and len(have) / len(need) >= 0.75:
+                same.append((len(have), u))
+        same = [u for _, u in sorted(same, key=lambda r: (-r[0], r[1]))]
+        if same:
+            found = True
+            print(f"  Paths containing most words of the primary keyword \"{primary}\":")
+            for u in same[:15]:
+                print(f"    {u}  {all_urls[u]}")
+    if not found:
+        print("  No existing page found by slug or primary keyword. Still run a site: search.")
+    print("  Read each candidate's title and H1 before deciding (see SKILL.md Step 0.5).\n")
+
+
 def read_file(path):
     """Return (urls_with_lastmod, child_sitemaps)."""
     with open(path, "rb") as f:
@@ -61,7 +123,9 @@ def read_file(path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("files", nargs="+")
-    ap.add_argument("--terms", nargs="+", required=True)
+    ap.add_argument("--terms", nargs="+", required=True,
+                    help="topic terms; the first one is treated as the primary keyword")
+    ap.add_argument("--slug", help="the brief's planned URL path, to check whether it already exists")
     ap.add_argument("--top", type=int, default=40)
     ap.add_argument("--csv")
     args = ap.parse_args()
@@ -85,6 +149,8 @@ def main():
         for c in children:
             print("  ", c)
         print()
+
+    existing_page_report(all_urls, args.slug, args.terms[0])
 
     scored, excluded = [], 0
     for url, lastmod in all_urls.items():
