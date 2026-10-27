@@ -1,6 +1,6 @@
 # Marketing Skills
 
-Marketing skills I actually use, packaged as a Claude Code plugin marketplace. Four so far, more as I clean them up.
+Marketing skills I actually use, packaged as a Claude Code plugin marketplace. Five so far, more as I clean them up.
 
 These are not prompt templates. Each one is a full skill: instructions, reference docs, and where it helps, Python that builds the deliverable. You point them at real exports and you get back a report or a workbook you can put in front of a client.
 
@@ -48,6 +48,16 @@ Screaming Frog crawl plus ranking data, out the other side as a keyword-mapped w
 
 Maps a target keyword to every page, classifies page types, assigns optimization priority, and adds a status column so the work is trackable. This is the gap between "I have data" and "I know what to optimize."
 
+## Content
+
+### content-writing-assistant
+
+Content brief and brand brief in, a draft that beats the SERP instead of averaging it out.
+
+It reads the ranking pages, splits what they cover into the floor (what every page has, so the searcher expects it) and the gap (what nobody covers well), and writes to the gap in the brand's voice. Then it checks the draft twice: once against the brand brief's hard rules, once against Google's helpful content self-assessment. The package carries the article and meta, an author bio, a multimedia plan, internal links from a sitemap crawl, keyword data from whatever SEO connector you have, and JSON-LD schema, as Markdown plus Word.
+
+Two things it refuses to do. It will not invent experience, statistics, quotes or credentials; it leaves a marked placeholder for a human to fill. And nothing it writes is approved: every package opens as a draft and ends with a sign-off block that a named person has to clear. Point it at a live URL instead of a brief and it runs a refresh, protecting the queries the page already earns.
+
 ## Paid search
 
 ### paid-search-account-audit
@@ -62,7 +72,7 @@ The intake is the skill and it is not optional. Conversion columns in a real acc
 
 ## Requirements
 
-Python 3.10+. The workbook and Word builders want `openpyxl` and `python-docx`; the paid search audit also uses `pandas`. The backlink and AI visibility skills work best with a Moz API subscription and the Moz MCP connector enabled, but both accept CSV exports instead. The paid search audit can optionally pull keyword intent from the same connector and skips that step cleanly without it.
+Python 3.10+. The workbook and Word builders want `openpyxl` and `python-docx`; the paid search audit also uses `pandas`. The backlink and AI visibility skills work best with a Moz API subscription and the Moz MCP connector enabled, but both accept CSV exports instead. The paid search audit can optionally pull keyword intent from the same connector and skips that step cleanly without it. The content writing assistant uses `beautifulsoup4` and `python-docx`, and works with any SEO data connector, or none.
 
 ## Contributing
 

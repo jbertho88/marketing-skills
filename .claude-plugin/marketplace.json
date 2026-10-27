@@ -5,8 +5,8 @@
     "url": "https://jonathanberthold.com"
   },
   "metadata": {
-    "description": "Production marketing skills for Claude Code. SEO and AI search: AI visibility analysis, backlink gap analysis, and keyword-mapped SEO workbooks. Paid search: full Google Ads and Microsoft Ads account audits.",
-    "version": "1.1.0"
+    "description": "Production marketing skills for Claude Code. SEO and AI search: AI visibility analysis, backlink gap analysis, and keyword-mapped SEO workbooks. Content: SERP-grounded article writing and refreshes. Paid search: full Google Ads and Microsoft Ads account audits.",
+    "version": "1.2.0"
   },
   "plugins": [
     {
@@ -44,6 +44,18 @@
       "license": "MIT",
       "category": "seo",
       "keywords": ["seo", "on-page", "keyword-mapping", "screaming-frog", "gsc", "workbook", "xlsx"]
+    },
+    {
+      "name": "content-writing-assistant",
+      "source": "./plugins/content-writing-assistant",
+      "description": "Write or refresh a people-first SEO article from a content brief and a brand brief. Reads the live SERP for the floor and the gaps, checks the draft against Google's helpful content guidance and your brand rules, and ships article, author bio, multimedia plan, internal links, schema, and a required human sign-off as Markdown plus Word.",
+      "version": "1.0.0",
+      "author": { "name": "Jonathan Berthold", "url": "https://jonathanberthold.com" },
+      "homepage": "https://github.com/jbertho88/marketing-skills/tree/main/plugins/content-writing-assistant",
+      "repository": "https://github.com/jbertho88/marketing-skills",
+      "license": "MIT",
+      "category": "content",
+      "keywords": ["seo", "content", "copywriting", "serp-analysis", "helpful-content", "eeat", "internal-linking", "schema"]
     },
     {
       "name": "paid-search-account-audit",

@@ -1,0 +1,88 @@
+{
+  "skill_name": "content-writing-assistant",
+  "evals": [
+    {
+      "id": 0,
+      "name": "new-article-from-briefs",
+      "prompt": "ok attached are the content brief and brand brief for a toronto physio clinic. they want an article for \"physiotherapy for lower back pain toronto\", money page is their back pain service page. I don't have a serp export handy so just pull it yourself. author is their clinic director, details are in the brand brief",
+      "expected_output": "Reads both briefs, falls back to web search for the SERP and labels it an approximation, separates floor from gaps, writes to the gap in the brand voice, links the money page, and delivers the full package as Markdown and .docx with a draft status line and sign-off block. Health topic, so the expert reviewer is marked required.",
+      "assertions": [
+        "Labels the SERP as a web search approximation rather than a rank-tracker pull",
+        "SERP report names both floor subtopics and at least one gap, each backed by named pages",
+        "Article links the money page named in the content brief",
+        "Uses [EXPERT INPUT] or [VERIFY] placeholders instead of inventing patient stories, statistics or credentials",
+        "Does not set a word count target from competitor lengths",
+        "Includes a helpful content self-assessment table",
+        "Package header carries the DRAFT status line and ends with the sign-off block",
+        "Expert reviewer is marked required because the topic is health",
+        "Delivers both a .md and a .docx file",
+        "Runs the existing-page check (sitemap and site: search) before keyword and SERP research",
+        "Delivers a clean article file with no editor notes, plus a separate content package, each as .md and .docx",
+        "Runs brief_check.py and reports its result in the package"
+      ],
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "refresh-declining-page",
+      "prompt": "can you refresh https://example.com/blog/how-to-choose-a-crm/ ? it was ranking top 3 for \"how to choose a crm\" and dropped to page 2 after the summer. search console export attached. don't change the url",
+      "expected_output": "Switches to refresh mode, captures a baseline of the live page before changing anything, identifies protected queries from the Search Console export, diagnoses the page against the current SERP with causes framed as hypotheses, produces a change log covering every original section, keeps the URL, and only updates dateModified for substantive changes.",
+      "assertions": [
+        "Recognises refresh mode from the live URL",
+        "Captures a baseline (title, meta, H1, outline, links, dates) before proposing changes",
+        "Lists protected queries drawn from the supplied Search Console data",
+        "Frames causes of the ranking drop as hypotheses, not proven causes",
+        "Change log assigns an action to every original section",
+        "Keeps the URL unchanged",
+        "Updates dateModified only for substantive changes and keeps datePublished",
+        "Includes a measurement baseline with re-check dates"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "regulated-client-compliance",
+      "prompt": "need an article for \"dui lawyer ottawa\" for a criminal defence firm. brand brief attached, it bans best, top, #1, proven, any outcome guarantees and success stats because of law society advertising rules. half the sites ranking call themselves the best dui lawyer in ottawa lol. serp export from our rank tracker attached",
+      "expected_output": "Uses the supplied SERP export, notes competitor superlatives as patterns not to copy, writes without any banned term or outcome promise, cites primary legal sources, reports which brand rules were checked, and marks the expert reviewer as required.",
+      "assertions": [
+        "Uses the supplied SERP export rather than web search",
+        "SERP report flags competitor superlatives as a pattern not to copy",
+        "Article, meta and author bio contain none of the banned words or any outcome guarantee",
+        "Cites primary sources such as statutes or official bodies for legal claims",
+        "Compliance results list the brand rules that were checked",
+        "Expert reviewer is marked required in the sign-off block",
+        "Does not invent case results, client testimonials or success rates",
+        "Builds the sign-off block from the brand brief's approval flow if it describes one",
+        "Clean article file contains no SERP report, rationale or editor notes"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "brief-slug-already-live",
+      "prompt": "content brief and brand brief attached for a window and door installer. brief wants a new whitepage at /whitepages/triple-pane-vs-double-pane.html targeting \"triple pane vs double pane windows\". 1,000 words, unsigned like all their whitepages. go ahead",
+      "expected_output": "Before research, checks the client sitemap and finds whether the slug or a same-query page already exists. If it does, tells the user, switches to refresh mode on that URL (or recommends one page plus a 301) instead of writing a duplicate. Writes no author bio because the brand publishes unsigned.",
+      "assertions": [
+        "Checks the client sitemap for the brief's slug and the primary keyword before keyword or SERP research",
+        "If the slug or a same-query page exists, says so in a message and does not produce a duplicate new page",
+        "Uses the Organization as schema author and writes no invented byline or bio",
+        "Mandated length followed and flagged only if it forces padding or cutting"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "briefs-contradict-each-other",
+      "prompt": "writing a 'best pellet grills' guide for a bbq retailer. content brief and brand brief attached. heads up the content brief was written a while ago, the brand brief was refreshed last month. content brief says don't mention one of the brands, brand brief says they started carrying it. also the content brief wants the quote placeholder as [[QUOTE: name]] format",
+      "expected_output": "Logs every conflict between the briefs in a conflicts table with how it was resolved; checks the retailer's live site (collection or product sitemap) to settle what is stocked; applies hard brand rules over the content brief; uses the brief's [[QUOTE: ...]] placeholder format in the clean article; leaves anything still unresolved as a placeholder with an owner.",
+      "assertions": [
+        "Brief synthesis contains a conflicts table listing each disagreement and its resolution",
+        "Checks the live site to settle the stocked-brand conflict and names the URL that settled it",
+        "Hard brand rules from the brand brief are applied even where the content brief differs",
+        "Clean article uses the [[QUOTE: ...]] placeholder format the brief defines",
+        "Unresolved conflicts become placeholders listed as open items with an owner, not silent choices"
+      ],
+      "files": []
+    }
+  ]
+}
