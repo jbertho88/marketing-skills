@@ -38,7 +38,7 @@ Then select:
 - Link to supporting pages wherever a reader would genuinely want the deeper explanation
 - Typical density: about one contextual internal link per 150 to 250 words, with judgement. A link must help the reader at that point
 - Anchors: descriptive, varied, 2 to 6 words, matching the target page's topic. Mix partial-match, natural phrase and occasional branded anchors. Never use the same exact-match anchor twice, never "click here"
-- Do not link the same URL more than once in the body
+- Do not link the same URL more than once in the body. If the brief requires repeats (for example a brand link in every table row and again in that brand's section), follow the brief, but `brief_check.py` will still warn. Keep the warning and say in the package which repeats the brief required, so the client can decide
 - Do not link to pages that compete for the same primary keyword as the new article; flag those as **cannibalisation risk** instead
 
 **Inbound recommendations (to the new article)**

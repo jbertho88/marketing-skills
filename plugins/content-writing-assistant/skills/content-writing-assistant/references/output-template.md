@@ -57,6 +57,7 @@ Use the headings exactly so editors can find things fast.
 - Byline policy: <named author | unsigned | not stated>
 - Approval flow: <from the brand brief, or "not stated, default roles used">
 - Existing-page check (Step 0.5): <result: none found | slug already live, switched to Refresh | same-query page found at URL, recommendation>
+- Brand brief age: <last refreshed DATE; current | past its own refresh date, flagged>
 
 ### Conflicts between the briefs
 | # | Topic | Content brief says | Brand brief / live site says | Resolved by | Decision |
@@ -100,6 +101,10 @@ Use the headings exactly so editors can find things fast.
 - Helpful content self-assessment table (see helpful-content.md)
 - Disclosure recommendation
 - Open items: every placeholder in one list, with the person who owns it
+- brief_check.py warnings that stand, and why (for example, repeat links the brief requires)
+
+### Site corrections found
+<errors on the client's live site found during research: conflicting figures, outdated claims, wrong labels, broken template text. One line each with the URL. Omit the section if none>
 
 ## 10. Publishing sign-off
 <see below>
@@ -144,6 +149,8 @@ Intake
 - [ ] Existing-page check done; mode and URL confirmed
 - [ ] Every conflict between the briefs logged with how it was resolved
 - [ ] Byline policy and approval flow taken from the brand brief, or marked as not stated
+- [ ] Brand brief age checked against its own refresh date
+- [ ] No staff contact details, credentials, confidential notes or customer data copied from the briefs into either file
 
 Intent and SERP
 - [ ] Page type matches the dominant intent on the SERP

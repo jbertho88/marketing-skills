@@ -48,6 +48,10 @@ Extract what you can from the briefs, then ask about only what is missing **and*
 
 If the user is not around to answer, take the most reasonable reading, state it at the top of the deliverable under **Assumptions**, and proceed.
 
+**Check the brand brief's age.** If it carries a last-refreshed date, a next-refresh date or a maximum age, compare them with today. A brief past its own refresh date may hold outdated facts (a discontinued product, an old store count, a departed approver). Keep using it, flag it in the brief synthesis, and lean harder on the live site for anything checkable.
+
+**Keep confidential material out of every deliverable.** Brand briefs are internal documents. They often hold staff emails and phone numbers, notes on where passwords live, customer data rules, contract and pricing details, and candid notes about the client. Use them to do the work; never copy them into the article or the package. Names and roles are enough for the sign-off block. If a brief says some material must never be uploaded to AI tools, and the user has shared that kind of material anyway, don't use it and say so.
+
 ### When the two briefs disagree
 
 Content briefs and brand briefs are written by different people at different times, and they contradict each other more often than not: a brand listed as never-name that the client now sells, a figure quoted three ways, a heading rule one brief breaks. Resolve each conflict with this order, and log every one in the brief synthesis under **Conflicts**:
@@ -92,6 +96,10 @@ If you switch mode or recommend a different URL, say so in a message before cont
 
 Read `references/keyword-data.md`. Check which SEO data connectors are available in the session (Moz, Ahrefs, Semrush, or another) and use whichever is present for search volume, difficulty, keyword suggestions and related questions. If several are connected, use one as primary and say which. If none is connected, work from the brief, the SERP itself (People Also Ask, related searches) and web search, and label volumes as unknown rather than guessing numbers.
 
+Two common cases:
+- **A connector is installed but errors** (authentication, quota, timeout): retry once, then treat it as unavailable and say so in the keyword report. Don't stall the run on it
+- **The brief already supplies volumes:** use them, name their source and date as the brief gives them, and don't spend quota re-pulling unless the user asks or the figures look wrong for the market
+
 Keyword data informs which secondary terms and questions to cover. It never justifies writing for a term the audience does not actually care about.
 
 ## Step 2: Get the SERP
@@ -104,6 +112,8 @@ Priority order:
 Record position, URL, domain, page type, and SERP features (featured snippet, People Also Ask, video carousel, local pack, AI overview, discussions). Drop non-comparable results from page analysis but **keep them in the report**, because they reveal intent and format. A SERP full of videos says the article needs video. A SERP full of forums says the searcher wants lived experience.
 
 Analyze the top 10 organic results where possible, minimum 5. Fewer than 5 fetchable pages lowers confidence; say so.
+
+**If the brief names its own competitors** ("what competitors did well", a benchmark page), treat the observed SERP as primary and the brief's list as context. Fetch the brief's named pages if they're findable and analyze them alongside the SERP, and note in the report which named competitors didn't appear in the SERP or couldn't be found. Brief competitor research is often a few weeks old; the SERP moves.
 
 ## Step 3: Analyze the ranking pages
 
@@ -215,7 +225,7 @@ Every run delivers **two documents**, each as Markdown and Word. Layouts are in 
    9. Quality results: brief_check.py output, compliance checks, helpful content self-assessment, every open placeholder in one list
    10. Publishing sign-off block
 
-   In Refresh mode, insert the **page diagnosis**, **change log** and **measurement baseline** from `references/refresh-mode.md` after the SERP report, and present the article as the revised version. If research turned up errors elsewhere on the client's site, list them in the package for the client; don't fix them silently.
+   In Refresh mode, insert the **page diagnosis**, **change log** and **measurement baseline** from `references/refresh-mode.md` after the SERP report, and present the article as the revised version. If research turned up errors elsewhere on the client's site (conflicting figures, outdated claims, broken template text, wrong labels), list them in the package's **Site corrections found** section for the client; don't fix or repeat them silently.
 
 **Building the files.**
 - Write both as Markdown first. Markdown pastes cleanly into any CMS

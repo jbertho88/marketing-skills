@@ -173,6 +173,9 @@ Two documents, each as Markdown and Word:
 | 9 | Quality results | Automated brief check, compliance checks, helpful content self-assessment, and every open item |
 | 10 | Publishing sign-off | Your approval steps, the open items each must clear, and blank name, date and status fields |
 
+The quality section also lists **site corrections found**: errors on your live site
+that turned up during research, such as conflicting figures or outdated claims.
+
 Refreshes also include a page diagnosis, a change log and a measurement baseline.
 Markdown pastes cleanly into any CMS. In the Word files, open placeholders are
 highlighted in yellow.
@@ -204,6 +207,12 @@ These are deliberate. They are why the output is safe to put in front of a clien
   unresolved becomes a placeholder for the person who owns it. Every decision is
   logged in the package.
 - **No invented authors.** If the brand publishes unsigned, the page stays unsigned.
+- **Internal details stay internal.** Staff contact details, credentials, confidential
+  notes and customer data in your briefs are used to do the work, never copied into
+  the article or the package.
+- **Stale inputs get flagged.** A brand brief past its own refresh date, a failing
+  SEO connector, or a brief's competitor list that no longer matches the live search
+  results are all called out rather than silently trusted.
 - **Nothing publishes without sign-off.** See below.
 
 ## The sign-off block

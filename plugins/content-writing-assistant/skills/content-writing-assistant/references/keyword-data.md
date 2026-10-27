@@ -21,6 +21,10 @@ Rules:
 
 If **no** connector is available: derive candidates from the brief, People Also Ask, related searches, and competitor headings. Report volume and difficulty as `unknown`. Never estimate numbers from memory.
 
+If a connector **is installed but fails** (authentication error, quota exhausted, timeouts): retry once, then treat it as unavailable. Say in the report which connector failed and how, so the user can fix it for next time.
+
+If the **brief supplies volumes** (often from the strategist's own tool): use them as given, label the source and date from the brief, and don't re-pull unless the user asks or a figure looks wrong for the market. Note any secondary terms you added that have no volume from either source.
+
 ## 2. What to pull
 
 - **Primary keyword**: volume, difficulty, click-through or SERP-feature data if offered, search intent label if offered
@@ -38,7 +42,7 @@ If **no** connector is available: derive candidates from the brief, People Also 
 
 ```
 ### Keyword data
-Source: <vendor connector, locale, date | no connector: derived from SERP and brief>
+Source: <vendor connector, locale, date | brief-supplied (tool, date) | connector failed: <how> | no connector: derived from SERP and brief>
 | Keyword | Role | Volume | Difficulty | Intent | Used in |
 |---|---|---|---|---|---|
 | <primary> | Primary | 1,300 | 42 | Commercial | H1, intro, H2 #2 |

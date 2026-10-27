@@ -142,7 +142,8 @@ def run(article_path, spec):
         add(f"required link: {need}", any(need in u for u in links), "present" if any(need in u for u in links) else "missing")
     dupes = {u: c for u, c in Counter(links).items() if c > 1}
     if dupes and not spec.get("allow_duplicate_links", False):
-        add("duplicate links", False, "; ".join(f"{u} x{c}" for u, c in dupes.items()), "WARN")
+        add("duplicate links", False, "; ".join(f"{u} x{c}" for u, c in dupes.items())
+            + " (if the brief requires these repeats, keep them and say so in the package)", "WARN")
     else:
         add("duplicate links", True, f"{len(links)} links, {len(set(links))} unique")
 

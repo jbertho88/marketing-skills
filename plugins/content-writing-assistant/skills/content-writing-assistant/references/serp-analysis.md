@@ -98,6 +98,7 @@ Lead with findings, then evidence.
 ## SERP report: "<keyword>"
 Source: <user-supplied export from TOOL on DATE | web search approximation on DATE>
 Pages analyzed: N of 10 (unfetched: list with reason)
+Brief-named competitors: <found in SERP | analyzed separately | not found> (if the brief names any)
 
 ### Verdict
 <2 to 4 sentences: intent, format to write, the main gap we are writing to, confidence>
